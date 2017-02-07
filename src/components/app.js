@@ -9,7 +9,7 @@ class App extends Component {
       <div className="app">
         <Header />
         <section className="content">
-          <Movie title="The LEGO Batman Movie"/>
+          <Movie />
         </section>
       </div>
     );
