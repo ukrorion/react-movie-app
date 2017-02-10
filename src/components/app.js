@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header';
-import Movie from './movie'
+import Search from './search';
+import Movie from './movie';
 
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="app">
         <Header />
         <section className="content">
+          <Search url="http://imdb.wemakesites.net/api/search" />
           <Movie />
         </section>
       </div>
