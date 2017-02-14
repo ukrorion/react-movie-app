@@ -13,7 +13,7 @@ class Search extends Component {
   render(){
     return (
       <section className="search">
-        <input idName="search_input" />
+        <input id="search_input" />
         <button type="submit">Search</button>
       </section>
     );
