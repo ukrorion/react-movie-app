@@ -22,8 +22,8 @@ class App extends Component {
     super();
     this.state = { movies: [] }
   }
-  componentWillMount(){
-    getShortInfo('Terminator')
+  update(query){
+    getShortInfo(query)
     .then(response => response.data.results)
     .then(function(result) { this.setState({movies: result.titles}) }.bind(this))
   }
@@ -33,10 +33,10 @@ class App extends Component {
       <div className="app">
         <Header />
         <section className="content">
-          <Search url="http://imdb.wemakesites.net/api/search" />
-            { movies.map((movie, index) => {
-              return <Movie key={movie.id} movie={movie} />
-            }) }
+          <Search update={this.update.bind(this)} />
+          { movies.map((movie, index) => {
+            return <Movie key={movie.id} movie={movie} />
+          }) }
         </section>
       </div>
     );

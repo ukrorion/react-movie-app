@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './../css/movie.css'
+import './../css/movie.css'
 
 class Movie extends Component {
   constructor(){
@@ -18,7 +18,7 @@ class Movie extends Component {
         </header>
         <div>
           <section className="image">
-            <img src={this.state.thumbnail} />
+            <img src={this.state.thumbnail} role="presentation" />
           </section>
           {/*<section className="storyline">
             <h4>Storyline</h4>

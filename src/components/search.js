@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
 
 class Search extends Component {
-  constructor(){
-    super();
-    this.state = {
-      search_phrase: ""
-    }
-  }
   search(){
-
+    this.props.update(this.refs.search.value);
   }
   render(){
     return (
       <section className="search">
-        <input id="search_input" />
-        <button type="submit">Search</button>
+        <input ref="search" />
+        <button type="button" onClick={this.search.bind(this)}>Search</button>
       </section>
     );
   }
