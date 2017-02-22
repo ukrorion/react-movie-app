@@ -1,12 +1,40 @@
+$margin-size: 10px;
+$margin-out: $margin-size 0 0 $margin-size;
+$margin-in:  0 $margin-size $margin-size 0;
+
 body
   margin: 0
   padding: 0
   font-family: sans-serif
+  margin: $margin-out
   .movies-list
-    display: flex
+    display: inline-flex
     flex-wrap: wrap
+    flex-direction: row
+    margin-top: $margin-size
     width: 30%
     .movie
-      display: inline-flex
+      flex-grow: 1
+      border: solid 1px green
+      margin: $margin-in
+      padding: 5px
       .title
         display: flex
+        h2
+          font-size: 1em
+          margin: 0 0 5px 0
+  .details
+    margin-top: $margin-size
+
+@media screen and (max-width: 600px)
+  .movie-box
+    display: flex
+    flex-wrap: wrap
+    flex-direction: column
+    .movies-list
+      width: 100%
+
+
+@media screen and (min-width: 601px)
+  .movie-box
+    display: inline-flex

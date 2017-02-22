@@ -31,10 +31,13 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <section className="content">
-          <Search update={this.update.bind(this)} />
+        <Search update={this.update.bind(this)} />
+        <div className="movie-box">
           <MovieList movies={this.state.movies} />
-        </section>
+          <section className="details">
+            Test
+          </section>
+        </div>
       </div>
     );
   }
