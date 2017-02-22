@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import jQuery from 'jquery';
 import Header from './header';
 import Search from './search';
-import Movie from './movie';
+import MovieList from './movies_list';
 
 let getShortInfo = (search) => {
     return jQuery.ajax({
@@ -28,15 +28,12 @@ class App extends Component {
     .then(function(result) { this.setState({movies: result.titles}) }.bind(this))
   }
   render() {
-    let movies = this.state.movies;
     return (
       <div className="app">
         <Header />
         <section className="content">
           <Search update={this.update.bind(this)} />
-          { movies.map((movie, index) => {
-            return <Movie key={movie.id} movie={movie} />
-          }) }
+          <MovieList movies={this.state.movies} />
         </section>
       </div>
     );
