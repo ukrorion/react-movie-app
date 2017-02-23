@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import { getMovieDetails } from '../services/movie_loader';
+
 
 class MoviesList extends Component {
   loadMovie(e){
     let id = e.currentTarget.getAttribute('id');
-    this.props.loadMovie("test");
+
+    getMovieDetails(id)
+      .then(response => response.data.results)
+      .then(function(result) { this.props.loadMovie(result) }.bind(this))
   }
   render() {
     let movies = this.props.movies;
