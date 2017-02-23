@@ -20,7 +20,13 @@ let getShortInfo = (search) => {
 class App extends Component {
   constructor(){
     super();
-    this.state = { movies: [] }
+    this.state = { 
+      movies: [],
+      movie: null
+    }
+  }
+  loadMovie(data){
+    this.setState({movie: data});
   }
   update(query){
     getShortInfo(query)
@@ -33,9 +39,9 @@ class App extends Component {
         <Header />
         <Search update={this.update.bind(this)} />
         <div className="movie-box">
-          <MovieList movies={this.state.movies} />
+          <MovieList movies={this.state.movies} loadMovie={this.loadMovie.bind(this)}/>
           <section className="details">
-            Test
+            {this.state.movie}
           </section>
         </div>
       </div>
