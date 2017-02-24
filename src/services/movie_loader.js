@@ -1,6 +1,6 @@
 import jQuery from 'jquery';
 
-let loader = (url, query=null) => {
+const loader = (url, query=null) => {
   return jQuery.ajax({
     url: url,
     dataType: 'jsonp',
@@ -12,13 +12,18 @@ let loader = (url, query=null) => {
   })
 }
 
+class MovieLoader {
+  constructor(url) {
+    this.url = url;
+  }
 
-const searchShortInfo = (query) => {
-  return loader('http://imdb.wemakesites.net/api/search', query);
+  getShortInfo(search) {
+    return loader(this.url, search);
+  }
+
+  getMovieDetails(id){
+    return loader(this.url+id);
+  }
 }
 
-const getMovieDetails = (id) => {
-  return loader(`http://imdb.wemakesites.net/api/${id}`);
-}
-
-export { searchShortInfo, getMovieDetails }
+export default MovieLoader;

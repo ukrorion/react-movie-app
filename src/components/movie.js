@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './../css/movie.css'
 
 class Movie extends Component {
   constructor(){
@@ -7,31 +6,39 @@ class Movie extends Component {
     this.state = {}
   }
   componentWillMount() {
-    if(this.props.movie)
-      this.setState(this.props.movie);
+    if(this.props.data)
+      this.setState(this.props.data);
+  }
+  componentWillUpdate(nextProps, nextState) {
+    if(nextProps.data)
+      this.setState({movie: nextProps.data});
   }
   render() {
+    if(!this.state.movie){
+      return null;
+    } 
+    let movieDetail = this.state.movie;
     return (
       <article className="movie">
         <header className="title">
-          <h2>{this.state.title}</h2>
+          <h2>{movieDetail.title}</h2>
         </header>
         <div>
           <section className="image">
-            <img src={this.state.thumbnail} role="presentation" />
+            <img src={movieDetail.image} role="presentation" />
           </section>
-          {/*<section className="storyline">
-            <h4>Storyline</h4>
-            <p>{this.state.storyline}</p>
-          </section>*/}
+          <section className="storyline">
+            <h4>Description</h4>
+            <p>{movieDetail.description}</p>
+          </section>
         </div>
-        {/*<section className="details">
+        <section className="details">
           <h2>Details</h2>
-          <p><span>Official Sites:</span><a href={this.state.url} target="_blank">Official site</a></p>
-          <p><span>Country:</span>{this.movie.country}</p>
-          <p><span>Language:</span>{this.movie.lenguage}</p>
-          <p><span>Release Date:</span>{this.movie.release}</p>
-        </section>*/}
+          {/*<p><span>Cast:</span>{movieDetail.cast.join(', ')}</p>*/}
+          {/*<p><span>Geners:</span>{movieDetail.geners.join(', ')}</p>*/}
+          <p><span>Release Date:</span>{movieDetail.release}</p>
+          <p><span>Duration:</span>{movieDetail.duration}</p>
+        </section>
       </article>
     );
   }

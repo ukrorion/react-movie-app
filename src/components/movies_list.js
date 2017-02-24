@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { getMovieDetails } from '../services/movie_loader';
+import MovieLoader from '../services/movie_loader'
 
+let movieLoader = new MovieLoader("http://imdb.wemakesites.net/api/")
 
 class MoviesList extends Component {
   loadMovie(e){
     let id = e.currentTarget.getAttribute('id');
-
-    getMovieDetails(id)
-      .then(response => response.data.results)
-      .then(function(result) { this.props.loadMovie(result) }.bind(this))
+    this.props.loadData(
+      movieLoader.getMovieDetails(id)
+        .then(result => result.data)
+    );
   }
   render() {
     let movies = this.props.movies;
