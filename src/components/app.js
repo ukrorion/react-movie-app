@@ -22,6 +22,7 @@ class App extends Component {
     movieLoader.getShortInfo(query)
     .then(response => response.data.results)
     .then(function(result) { this.setState({movies: result.titles}) }.bind(this))
+    .catch((err) => console.log(err))
   }
   render() {
     return (

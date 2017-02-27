@@ -1,23 +1,11 @@
 import React, { Component } from 'react'
 
 class Movie extends Component {
-  constructor(){
-    super();
-    this.state = {}
-  }
-  componentWillMount() {
-    if(this.props.data)
-      this.setState(this.props.data);
-  }
-  componentWillUpdate(nextProps, nextState) {
-    if(nextProps.data)
-      this.setState({movie: nextProps.data});
-  }
   render() {
-    if(!this.state.movie){
+    if(!this.props.data)
       return null;
-    } 
-    let movieDetail = this.state.movie;
+    
+    let movieDetail = this.props.data;
     return (
       <article className="movie">
         <header className="title">
@@ -34,10 +22,10 @@ class Movie extends Component {
         </div>
         <section className="details">
           <h2>Details</h2>
-          {/*<p><span>Cast:</span>{movieDetail.cast.join(', ')}</p>*/}
-          {/*<p><span>Geners:</span>{movieDetail.geners.join(', ')}</p>*/}
-          <p><span>Release Date:</span>{movieDetail.release}</p>
-          <p><span>Duration:</span>{movieDetail.duration}</p>
+          <p><strong>Cast:</strong>{movieDetail.cast.join(', ')}</p>
+          <p><strong>Geners:</strong>{movieDetail.genres.join(', ')}</p>
+          <p><strong>Release Date:</strong>{movieDetail.released}</p>
+          <p><strong>Duration:</strong>{movieDetail.duration}</p>
         </section>
       </article>
     );
