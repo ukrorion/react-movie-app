@@ -1,17 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { findMovies } from '../actions'
 
-class Search extends Component {
-  search(){
-    this.props.update(this.refs.search.value);
-  }
-  render(){
-    return (
-      <section className="search">
-        <input ref="search" />
-        <button type="button" onClick={this.search.bind(this)}>Search</button>
-      </section>
-    );
-  }
+let Search = ({ dispatch }) => {
+  let input;
+
+  return (
+    <section className="search">
+      <input ref={node => {input = node}} />
+      <button type="button" onClick={()=>{
+        findMovies(input.value, dispatch)
+      }}>Search</button> 
+    </section>
+  )
 }
+
+Search = connect()(Search)
 
 export default Search;
