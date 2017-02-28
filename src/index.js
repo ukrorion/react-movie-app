@@ -7,10 +7,8 @@ import moviesApp from './reducers'
 import App from './components/app';
 import './stylesheets/app.sass';
 
-const store = createStore(moviesApp)
-
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStore(moviesApp)}>
     <App />
   </Provider>,
   document.getElementById('root')

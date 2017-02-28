@@ -2,9 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { findMovies } from '../actions'
 
-let Search = ({ dispatch }) => {
+let Search = ({dispatch}) => {
   let input;
-
   return (
     <section className="search">
       <input ref={node => {input = node}} />

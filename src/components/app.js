@@ -1,10 +1,12 @@
 import React from 'react';
 import Header from './header';
 import Search from './search';
-// import Movie from './movie';
 import MoviesList from './movie_list';
 
-const App = () => {
+
+
+
+let App = () => {
   return (
     <div className="app">
       <Header />
@@ -13,6 +15,5 @@ const App = () => {
     </div>
   );
 }
-
 
 export default App;

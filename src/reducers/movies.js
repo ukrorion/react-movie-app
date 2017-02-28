@@ -1,9 +1,7 @@
-const movies = (state = {movies: []}, action) => {
-  debugger;
+const movies = (state = [], action) => {
   switch(action.type){
     case 'RECEIVE_MOVIES':
-      debugger;
-      return {movies: action.movies}
+      return action.movies
     default:
       return state;
   }

@@ -1,5 +1,4 @@
-const search = (state = "", action) => {
-  console.log(action.query)
+const search = (state = {}, action) => {
   switch(action.type){
     case 'SEARCH_MOVIES':
       return {query: action.query}
@@ -8,4 +7,4 @@ const search = (state = "", action) => {
   }
 }
 
-export default search;
+export default search

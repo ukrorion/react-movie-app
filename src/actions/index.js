@@ -21,6 +21,6 @@ export const receiveMovies = (query, movies) => {
 export function findMovies(query, dispatch){
   dispatch(searchMovies(query))
   return movieLoader.getShortInfo(query)
-  .then(response => response.data.results)
-  .then(result => { debugger; dispatch(receiveMovies(query, result.titles))})
+    .then(response => { return response.data.results })
+    .then(result => dispatch(receiveMovies(query, result.titles)))
 }
